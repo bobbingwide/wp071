@@ -174,7 +174,7 @@ window.focus();
 <tr>
 <td width="40">&nbsp;</td>
 <td width="415" align="left" height="40">
-<label for="trackback"><strong>TrackBack</strong> an <acronym title="Uniform Resource Locator">URL</acronym>:</label> (Seperate multiple URLs with commas.)<br />
+<label for="trackback"><strong>TrackBack</strong> an <acronym title="Uniform Resource Locator">URL</acronym>:</label> (Separate multiple URLs with commas.)<br />
 <input type="text" name="trackback" style="width: 415px" />
 </td>
 </tr>
