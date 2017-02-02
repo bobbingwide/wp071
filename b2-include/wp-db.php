@@ -19,15 +19,16 @@
 
 		var $debug_called;
 		var $vardump_called;
-		var $show_errors = true;
+		var $show_errors = true;	 
+		public $last_query;
 
 		// ==================================================================
 		//	DB Constructor - connects to the server and selects a database
 
-		function wpdb($dbuser, $dbpassword, $dbname, $dbhost)
+		function __construct($dbuser, $dbpassword, $dbname, $dbhost)
 		{
-
-			$this->dbh = @mysql_connect($dbhost,$dbuser,$dbpassword);
+			$this->last_query = null;
+			$this->dbh = mysqli_connect($dbhost,$dbuser,$dbpassword);
 
 			if ( ! $this->dbh )
 			{
@@ -49,7 +50,7 @@
 
 		function select($db)
 		{
-			if ( !@mysql_select_db($db,$this->dbh))
+			if ( !mysqli_select_db($this->dbh, $db))
 			{
 				$this->print_error("<ol id='error'>
 				<li><strong>Error selecting database <u>$db</u>!</strong></li>
