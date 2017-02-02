@@ -144,7 +144,7 @@
 			// Keep track of the last query for debug..
 			$this->last_query = $query;
 
-			// Perform the query via std mysql_query function..
+			// Perform the query via std mysqli_query function..
 			$this->result = mysqli_query( $this->dbh, $query);
 
 			// If there was an insert, delete or update see how many rows were affected

@@ -334,5 +334,6 @@ for ($i = 3; $i < count($url); $i++) {
 $abspath =  getenv('DOCUMENT_ROOT') . $relpath . '/';
 $b2inc = "/$b2inc";
 $pathserver = &$siteurl;
+error_reporting(E_ERROR | E_WARNING |E_PARSE);
 require_once($abspath.$b2inc.'/wp-db.php');
 ?>
