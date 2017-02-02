@@ -16,9 +16,9 @@ timer_start();
 get_currentuserinfo();
 
 $request = "SELECT * FROM $tablesettings";
-$result = mysql_query($request);
+$result = mysqli_query( $wpdb->dbh, $request);
 $querycount++;
-while($row = mysql_fetch_object($result)) {
+while($row = mysqli_fetch_object($result)) {
 	$posts_per_page=$row->posts_per_page;
 	$what_to_show=$row->what_to_show;
 	$archive_mode=$row->archive_mode;
@@ -35,14 +35,14 @@ $b2varstoreset = array('profile','standalone','redirect','redirect_url','a','pop
 for ($i=0; $i<count($b2varstoreset); $i += 1) {
 	$b2var = $b2varstoreset[$i];
 	if (!isset($$b2var)) {
-		if (empty($HTTP_POST_VARS["$b2var"])) {
-			if (empty($HTTP_GET_VARS["$b2var"])) {
+		if (empty($_POST["$b2var"])) {
+			if (empty($_GET["$b2var"])) {
 				$$b2var = '';
 			} else {
-				$$b2var = $HTTP_GET_VARS["$b2var"];
+				$$b2var = $_GET["$b2var"];
 			}
 		} else {
-			$$b2var = $HTTP_POST_VARS["$b2var"];
+			$$b2var = $_POST["$b2var"];
 		}
 	}
 }

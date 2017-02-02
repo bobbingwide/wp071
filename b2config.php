@@ -11,7 +11,7 @@
 // $blogfilename is the name of the default file for your blog
 // $blogname is the name of your blog
 
-$siteurl = 'http://example.com'; // Double check this, it's very important.
+$siteurl = 'http://qw/wp071'; // Double check this, it's very important.
 $blogfilename = 'index.php';
 $blogname = "my weblog";
 $blogdescription = "babblings !";
@@ -22,8 +22,8 @@ $admin_email = 'you@example.com';
 // ** MySQL settings **
 
 define('DB_NAME', 'b2');		// The name of the database
-define('DB_USER', 'user');		// Your MySQL username
-define('DB_PASSWORD', 'pass');	// ...and password
+define('DB_USER', 'b2');		// Your MySQL username
+define('DB_PASSWORD', 'b2');	// ...and password
 define('DB_HOST', 'localhost');	// 99% chance you won't need to change this value    
 
 
@@ -80,7 +80,7 @@ $use_balanceTags = 1;
 
 
 // set this to 0 to disable file upload, or 1 to enable it
-$use_fileupload = 0;
+$use_fileupload = 1;
 
 // enter the real path of the directory where you'll upload the pictures
 //   if you're unsure about what your real path is, please ask your host's support staff
