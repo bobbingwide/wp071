@@ -23,6 +23,6 @@
 ### Links
 - [WordPress Now Available](https://wordpress.org/news/2003/05/wordpress-now-available/)
 - [WordPress 0.71 Now available](https://wordpress.org/news/2003/06/wordpress-071-now-available/)
-- [WordPress is 5,000 days old]{http://herbmiller.me/2017/02/02/wordpress-5000-days-old/)
+- [WordPress is 5,000 days old](http://herbmiller.me/2017/02/02/wordpress-5000-days-old/)
 
 
