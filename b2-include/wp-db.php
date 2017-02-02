@@ -65,7 +65,7 @@
 		
 		function escape($str)
 		{
-			return mysql_escape_string(stripslashes($str));				
+			return mysqli_real_escape_string( $this->dbh, stripslashes($str));				
 		}
 
 		// ==================================================================
@@ -78,7 +78,7 @@
 			global $EZSQL_ERROR;
 
 			// If no special error string then use mysql default..
-			if ( !$str ) $str = mysql_error();
+			if ( !$str ) $str = mysqli_error( $this->dbh );
 			
 			// Log this error to the global array..
 			$EZSQL_ERROR[] = array 
@@ -145,7 +145,7 @@
 			$this->last_query = $query;
 
 			// Perform the query via std mysql_query function..
-			$this->result = mysql_query($query, $this->dbh);
+			$this->result = mysqli_query( $this->dbh, $query);
 
 			// If there was an insert, delete or update see how many rows were affected
 			// (Also, If there there was an insert take note of the insert_id
@@ -157,12 +157,12 @@
 				// This is true if the query starts with insert, delete or update
 				if ( preg_match("/^\\s*$word /i",$query) )
 				{
-					$this->rows_affected = mysql_affected_rows();
+					$this->rows_affected = mysqli_affected_rows($this->dbh );
 					
 					// This gets the insert ID
 					if ( $word == 'insert' || $word == 'replace' )
 					{
-						$this->insert_id = mysql_insert_id($this->dbh);
+						$this->insert_id = mysqli_insert_id($this->dbh);
 					}
 					
 					$this->result = false;
@@ -170,7 +170,7 @@
 				
 			}
    
-			if ( mysql_error() )
+			if ( mysqli_error( $this->dbh ) )
 			{
 
 				// If there is an error then take note of it..
@@ -188,9 +188,9 @@
 					// Take note of column info
 
 					$i=0;
-					while ($i < @mysql_num_fields($this->result))
+					while ($i < @mysqli_num_fields($this->result))
 					{
-						$this->col_info[$i] = @mysql_fetch_field($this->result);
+						$this->col_info[$i] = @mysqli_fetch_field($this->result);
 						$i++;
 					}
 
@@ -198,7 +198,7 @@
 					// Store Query Results
 
 					$i=0;
-					while ( $row = @mysql_fetch_object($this->result) )
+					while ( $row = @mysqli_fetch_object($this->result) )
 					{
 
 						// Store relults as an objects within main array
@@ -210,7 +210,7 @@
 					// Log number of rows the query returned
 					$this->num_rows = $i;
 
-					@mysql_free_result($this->result);
+					@mysqli_free_result($this->result);
 
 
 					// If there were results then return true for $db->query
