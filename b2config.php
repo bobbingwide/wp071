@@ -11,7 +11,7 @@
 // $blogfilename is the name of the default file for your blog
 // $blogname is the name of your blog
 
-$siteurl = 'http://qw/wp071'; // Double check this, it's very important.
+$siteurl = 'http://s.b/wp071'; // Double check this, it's very important.
 $blogfilename = 'index.php';
 $blogname = "my weblog";
 $blogdescription = "babblings !";
@@ -335,5 +335,13 @@ $abspath =  getenv('DOCUMENT_ROOT') . $relpath . '/';
 $b2inc = "/$b2inc";
 $pathserver = &$siteurl;
 error_reporting(E_ERROR | E_WARNING |E_PARSE);
+//error_reporting( E_ALL );
+
+if ( !function_exists('get_magic_quotes_gpc') ) {
+	function get_magic_quotes_gpc()
+	{
+		return false;
+	}
+}
 require_once($abspath.$b2inc.'/wp-db.php');
 ?>
