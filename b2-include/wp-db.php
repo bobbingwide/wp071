@@ -9,9 +9,9 @@
 	//  We have modified the HTML it returns slightly.
 
 	define('EZSQL_VERSION', '1.21');
-	define('OBJECT', 'OBJECT', true);
-	define('ARRAY_A', 'ARRAY_A', true);
-	define('ARRAY_N', 'ARRAY_N', true);
+	define('OBJECT',  'OBJECT');
+	define('ARRAY_A',  'ARRAY_A');
+	define('ARRAY_N', 'ARRAY_N');
 
 	//	The Main Class, renamed to avoid conflicts.
 
@@ -188,10 +188,13 @@
 					// Take note of column info
 
 					$i=0;
-					while ($i < @mysqli_num_fields($this->result))
+					//echo "tr $i " . $this->result;
+					while (is_object( $this->result ) && $i < @mysqli_num_fields($this->result))
 					{
 						$this->col_info[$i] = @mysqli_fetch_field($this->result);
 						$i++;
+                        //echo "tr $i " . $this->result;
+
 					}
 
 					// =======================================================
@@ -275,7 +278,7 @@
 			// If the output is an object then return object using the row offset..
 			if ( $output == OBJECT )
 			{
-				return $this->last_result[$y]?$this->last_result[$y]:null;
+				return isset(  $this->last_result[$y] ) ?$this->last_result[$y]:null;
 			}
 			// If the output is an associative array then return row as such..
 			elseif ( $output == ARRAY_A )
