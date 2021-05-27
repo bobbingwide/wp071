@@ -1246,8 +1246,11 @@ function apply_filters($tag, $string) {
 	global $b2_filter;
 	if (isset($b2_filter['all'])) {
 		$b2_filter['all'] = (is_string($b2_filter['all'])) ? array($b2_filter['all']) : $b2_filter['all'];
-		$b2_filter[$tag] = array_merge($b2_filter['all'], $b2_filter[$tag]);
-		$b2_filter[$tag] = array_unique($b2_filter[$tag]);
+		if ( isset( $b2_filter[$tag])) {
+			$b2_filter[$tag] = array_merge($b2_filter['all'], $b2_filter[$tag]);
+			$b2_filter[$tag] = array_unique($b2_filter[$tag]);
+		}
+
 	}
 	if (isset($b2_filter[$tag])) {
 		$b2_filter[$tags] = (is_string($b2_filter[$tag])) ? array($b2_filter[$tag]) : $b2_filter[$tag];

@@ -25,7 +25,8 @@ if (!get_magic_quotes_gpc()) {
     $_COOKIE = add_magic_quotes($_COOKIE);
 }
 
-$b2varstoreset = array('action','safe_mode','withcomments','c','posts','poststart','postend','content','edited_post_title','comment_error','profile', 'trackback_url', 'excerpt');
+$b2varstoreset = array('action','safe_mode','withcomments','c','posts','poststart','postend','content','edited_post_title','comment_error','profile', 'trackback_url', 'excerpt'
+, 'post_status', 'comment_status', 'ping_status', 'post_password');
 for ($i=0; $i<count($b2varstoreset); $i += 1) {
     $b2var = $b2varstoreset[$i];
     if (!isset($$b2var)) {

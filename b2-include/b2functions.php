@@ -585,7 +585,7 @@ function dropdown_categories($blog_ID=1) {
 	echo '<select name="post_category" style="width:'.$width.';" tabindex="2" id="category">';
 	while($post = mysqli_fetch_object($result)) {
 		echo "<option value=\"".$post->cat_ID."\"";
-		if ($post->cat_ID == $postdata["Category"])
+		if ( isset( $postdata['Category']) && $post->cat_ID == $postdata["Category"])
 			echo " selected";
 		echo ">".$post->cat_name."</option>";
 	}

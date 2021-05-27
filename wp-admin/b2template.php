@@ -2,6 +2,8 @@
 $title = "Template(s) &amp; file editing";
 /* <Template> */
 
+
+
 function add_magic_quotes($array) {
 	foreach ($array as $k => $v) {
 		if (is_array($v)) {

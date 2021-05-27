@@ -1,5 +1,7 @@
 <?php
 
+echo "blog.header";
+
 $use_cache = 1;
 $use_gzipcompression = 1;
 

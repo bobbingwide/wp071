@@ -335,7 +335,7 @@ $abspath =  getenv('DOCUMENT_ROOT') . $relpath . '/';
 $b2inc = "/$b2inc";
 $pathserver = &$siteurl;
 error_reporting(E_ERROR | E_WARNING |E_PARSE);
-//error_reporting( E_ALL );
+error_reporting( E_ALL );
 
 if ( !function_exists('get_magic_quotes_gpc') ) {
 	function get_magic_quotes_gpc()
