@@ -27,7 +27,7 @@ function wptexturize($text) {
 			$curl = str_replace('<q>', '&#8220;', $curl);
 			$curl = str_replace('</q>', '&#8221;', $curl);
 		}
-		if ('<' != $curl{0} && $next) { // If it's not a tag
+		if ('<' != $curl[0] && $next) { // If it's not a tag
 			$curl = str_replace('---', '&#8212;', $curl);
 			$curl = str_replace('--', '&#8211;', $curl);
 			$curl = str_replace("...", '&#8230;', $curl);
@@ -296,7 +296,7 @@ function convert_bbcode_email($content) {
 		"'<a href=\"mailto:'.antispambot('\\1').'\">\\2</a>'"
 	);
 
-	$content = preg_replace($bbcode_email["in"], $bbcode_email["out"], $content);
+	//$content = preg_replace($bbcode_email["in"], $bbcode_email["out"], $content);
 	return $content;
 }
 
@@ -742,7 +742,7 @@ function pingWeblogs($blog_ID = 1) {
 }
 
 // pings Weblogs.com/rssUpdates
-function pingWeblogsRss($blog_ID = 1, $rss_url) {
+function pingWeblogsRss($blog_ID = 1, $rss_url=null) {
 	global $use_weblogsrssping, $blogname, $rss_url;
 	if ($blogname != 'my weblog' && $rss_url != 'http://example.com/b2rdf.php' && $use_weblogsrssping) {
 		$client = new xmlrpc_client('/RPC2', 'rssrpc.weblogs.com', 80);
