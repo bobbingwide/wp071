@@ -595,7 +595,8 @@ function dropdown_categories($blog_ID=1) {
 function touch_time($edit = 1) {
 	global $month, $postdata, $time_difference;
 	// echo $postdata['Date'];
-	if ('draft' == $postdata['post_status']) {
+    //print_r( $postdata);
+	if ( $postdata !== null && 'draft' == $postdata['post_status']) {
 		$checked = 'checked="checked" ';
 		$edit = false;
 	} else {
