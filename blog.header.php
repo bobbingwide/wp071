@@ -1,20 +1,23 @@
 <?php
 
-echo "blog.header";
+//echo "blog.header";
 
 $use_cache = 1;
-$use_gzipcompression = 1;
+$use_gzipcompression = 0;
+
+
 
 /* Including config and functions files */
 $curpath = dirname(__FILE__).'/';
 
 require_once ($curpath.'/b2config.php');
+
 require_once ($curpath.$b2inc.'/b2template.functions.php');
+
 require_once ($curpath.$b2inc.'/b2vars.php');
 require_once ($curpath.$b2inc.'/b2functions.php');
 require_once ($curpath.$b2inc.'/xmlrpc.inc');
 require_once ($curpath.$b2inc.'/xmlrpcs.inc');
-
 $b2varstoreset = array('m','p','posts','w','c', 'cat','withcomments','s','search','exact', 'sentence','poststart','postend','preview','debug', 'calendar','page','paged','more','tb', 'pb','author','order','orderby');
 
 	for ($i=0; $i<count($b2varstoreset); $i += 1) {
@@ -60,10 +63,11 @@ $distinct = '';
 
 if ($pagenow != 'b2edit.php') { timer_start(); }
 
-if ($showposts) {
+if (isset( $showposts) && $showposts) {
     $showposts = (int)$showposts;
 	$posts_per_page = $showposts;
 }
+
 // if a month is specified in the querystring, load that month
 if ($m != '') {
 	$m = ''.intval($m);
@@ -80,6 +84,7 @@ if ($m != '') {
 		$where .= ' AND SECOND(post_date)='.substr($m,12,2);
 
 }
+
 
 if ($w != '') {
 	$w = ''.intval($w);
@@ -241,6 +246,8 @@ if ($p == 'all') {
 	$where = '';
 }
 
+
+
 $now = date('Y-m-d H:i:s',(time() + ($time_difference * 3600)));
 
 if ($pagenow != 'b2edit.php') {
@@ -251,13 +258,14 @@ if ($pagenow != 'b2edit.php') {
 	$distinct = 'DISTINCT';
 	if ($use_gzipcompression) {
 		// gzipping the output of the script
-		gzip_compression();
+		//gzip_compression();
 	}
 }
+
 $where .= ' AND (post_status = "publish"';
 
 // Get private posts
-if ('' != intval($user_ID)) $where .= " OR post_author = $user_ID AND post_status != 'draft')"; else $where .= ')';
+if ( isset( $user_ID) && '' != intval($user_ID)) $where .= " OR post_author = $user_ID AND post_status != 'draft')"; else $where .= ')';
 $request = " SELECT $distinct * FROM $tableposts WHERE 1=1".$where." ORDER BY post_$orderby $limits";
 
 
@@ -272,5 +280,7 @@ if ($preview) {
 
 //error_log("$request");
 //echo $request;
+
 $posts = $wpdb->get_results($request);
+//print_r( $posts );
 ?>
