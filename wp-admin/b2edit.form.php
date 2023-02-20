@@ -1,6 +1,8 @@
 <div class="wrap">
 <?php
 
+$form_prevstatus = '';
+
 function selected($selected, $current) {
 	if ($selected == $current) echo ' selected="selected"';
 }
