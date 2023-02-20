@@ -3,7 +3,7 @@
 
 require_once('../b2config.php');
 
-if (!$showposts) {
+if (!isset( $showposts) ) {
 	if ($posts_per_page) {
 		$showposts=$posts_per_page;
 	} else {
@@ -240,7 +240,7 @@ if ($i == "ASC")
 				if ($m)
 				echo "&m=$m";
 				echo "'>Edit</a>";
-				echo " - <a href='b2edit.php?action=delete&amp;post=$id' onclick=\"return confirm('You are about to delete this post \'".$row->post_title."\'\\n  \'Cancel\' to stop, \'OK\' to delete.')\">Delete</a> ";
+				echo " - <a href='b2edit.php?action=delete&amp;post=$id' onclick=\"return confirm('You are about to delete this post \'".$post->post_title."\'\\n  \'Cancel\' to stop, \'OK\' to delete.')\">Delete</a> ";
 				}
 				if ('private' == $post->post_status) echo ' - <strong>Private</strong>';
 				?>
