@@ -88,7 +88,8 @@ setTimeout("redirect();", 600);
 <body>
 
 <?php
-if ($profile==0) {
+
+if (empty( $profile )) {
 	include('b2menutop.php');
 }
 ?>
