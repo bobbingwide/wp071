@@ -2,6 +2,7 @@
 $title = 'Categories';
 /* <Categories> */
 
+/*
 function add_magic_quotes($array) {
 	foreach ($array as $k => $v) {
 		if (is_array($v)) {
@@ -18,6 +19,7 @@ if (!get_magic_quotes_gpc()) {
 	$_POST   = add_magic_quotes($_POST);
 	$_COOKIE = add_magic_quotes($_COOKIE);
 }
+*/
 
 $b2varstoreset = array('action','standalone','cat');
 for ($i=0; $i<count($b2varstoreset); $i += 1) {
