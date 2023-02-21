@@ -13,8 +13,8 @@
 
 $siteurl = 'http://s.b/wp071'; // Double check this, it's very important.
 $blogfilename = 'index.php';
-$blogname = "my weblog";
-$blogdescription = "babblings !";
+$blogname = "WordPress 0.71-gold for PHP 8";
+$blogdescription = "Reworking WordPress for its 20th anniversary on 27th May 2003";
 
 // Your email (obvious eh?)
 $admin_email = 'you@example.com';
@@ -335,7 +335,8 @@ $abspath =  getenv('DOCUMENT_ROOT') . $relpath . '/';
 $b2inc = "/$b2inc";
 $pathserver = &$siteurl;
 error_reporting(E_ERROR | E_WARNING |E_PARSE);
-error_reporting( E_ALL );
+error_reporting(E_ERROR | E_PARSE);
+//error_reporting( E_ALL );
 
 if ( !function_exists('get_magic_quotes_gpc') ) {
 	function get_magic_quotes_gpc()
@@ -343,5 +344,8 @@ if ( !function_exists('get_magic_quotes_gpc') ) {
 		return false;
 	}
 }
+
+$debug = 1;
 require_once($abspath.$b2inc.'/wp-db.php');
+//print_r( $GLOBALS);
 ?>
