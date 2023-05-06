@@ -10,7 +10,13 @@ function add_magic_quotes($array) {
 		}
 	}
 	return $array;
-} 
+}
+if ( !function_exists('get_magic_quotes_gpc') ) {
+    function get_magic_quotes_gpc()
+    {
+        return false;
+    }
+}
 
 if (!get_magic_quotes_gpc()) {
 	$_GET    = add_magic_quotes($_GET);

@@ -2,7 +2,12 @@
 $title = "Template(s) &amp; file editing";
 /* <Template> */
 
-
+if ( !function_exists('get_magic_quotes_gpc') ) {
+    function get_magic_quotes_gpc()
+    {
+        return false;
+    }
+}
 
 function add_magic_quotes($array) {
 	foreach ($array as $k => $v) {
